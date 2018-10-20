@@ -56,7 +56,7 @@
 <script>
 import RequestItem from "./RequestItem";
 export default {
-  name: "HelloWorld",
+  name: "RequestForm",
 
   components: { RequestItem },
 
