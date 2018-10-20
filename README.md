@@ -1,4 +1,4 @@
-# lit
+# Lit Manager
 
 ## Project setup
 ```
@@ -29,4 +29,3 @@ yarn run lint
 ```
 yarn run test:unit
 ```
-# Lit Manager
