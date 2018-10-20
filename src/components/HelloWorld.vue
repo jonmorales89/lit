@@ -1,59 +1,112 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-mocha" target="_blank" rel="noopener">unit-mocha</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+    <div>
+        <div class="hero is-primary">
+            <div class="hero-body">
+                <h1 class="title">Literature Manager</h1>
+            </div>
+        </div>
+
+        <section class="request_form">
+            <b-field grouped>
+                <b-field label="Congregation">
+                    <b-select placeholder="select a congregation">
+                        <option v-for="option in congregations"
+                                :value="option.id"
+                                :key="option.id">
+                            {{ option.title }}
+                        </option>
+                    </b-select>
+                </b-field>
+
+                <b-field label="Group Overseer">
+                    <b-select placeholder="select an overseer">
+                        <option v-for="option in overseers"
+                                :value="option.id"
+                                :key="option.id">
+                            {{ option.title }}
+                        </option>
+                    </b-select>
+                </b-field>
+
+                <b-field label="Name" expanded>
+                    <b-input />
+                </b-field>
+            </b-field>
+
+
+            <b-field label="Email" expanded>
+                <b-input type="email"/>
+            </b-field>
+
+            <hr>
+
+            <request-item />
+
+            <hr>
+
+            <div class="request_form_action is-pulled-right">
+                <a class="button is-primary is-outlined">Reset</a>
+                <a class="button is-primary is-outlined">Submit</a>
+            </div>
+
+        </section>
+    </div>
 </template>
 
 <script>
+import RequestItem from "./RequestItem";
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
-  }
+
+  components: { RequestItem },
+
+  data: () => ({
+    congregations: [
+      {
+        title: "Rowland Heights",
+        id: 1
+      },
+      {
+        title: "Nogales",
+        id: 2
+      },
+      {
+        title: "Walnut",
+        id: 3
+      },
+      {
+        title: "Rowland Chinese",
+        id: 4
+      }
+    ],
+
+    overseers: [
+      {
+        title: "Moreno",
+        id: 1
+      },
+      {
+        title: "Sheih",
+        id: 2
+      },
+      {
+        title: "Hines",
+        id: 3
+      }
+    ]
+  })
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="scss">
+.request_form {
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+
+  &_action > a{
+    margin-left: 1rem;
+  }
 }
 </style>
